@@ -1,13 +1,17 @@
 import './App.css';
 import Footer from './components/Footer';
-import Header from './components/Header';
-import Login from './components/Login';
+// import HeaderContext from './components/HeaderContext';
+// import LoginContext from './components/LoginContext';
+import HeaderZustand from './components/HeaderZustand';
+import LoginZustand from './components/LoginZustand';
 
 function App() {
   return (
     <>
-      <Header />
-      <Login />
+      {/* <HeaderContext /> */}
+      {/* <LoginContext /> */}
+      <HeaderZustand />
+      <LoginZustand />
       <Footer />
     </>
   );

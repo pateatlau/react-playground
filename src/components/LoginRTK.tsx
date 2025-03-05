@@ -2,8 +2,13 @@ import React, { JSX, useEffect, useRef, useState } from 'react';
 import Button from './Button';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../contexts/rtk/store';
-import { setName, setPassword, resetUser } from '../contexts/rtk/userSlice';
+import { AppDispatch, RootState } from '../contexts/rtk/store';
+import {
+  setName,
+  // setNameAsync,
+  setPassword,
+  resetUser,
+} from '../contexts/rtk/userSlice';
 
 const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
   e.preventDefault();
@@ -12,7 +17,7 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 
 const LoginContext: React.FC = (): JSX.Element => {
   const user = useSelector((state: RootState) => state.user);
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   const inputRef = useRef<HTMLInputElement>(null);
   const [reset, setReset] = useState(true);
@@ -47,10 +52,11 @@ const LoginContext: React.FC = (): JSX.Element => {
               className="rounded-md shadow-md p-4 w-2/3"
               ref={inputRef}
               onChange={(e) => {
-                dispatch(setName({ name: e.target.value }));
+                dispatch(setName(e.target.value));
+                // dispatch(setNameAsync(e.target.value));
                 console.log(e.target.value);
               }}
-              // value={user.name}
+              value={user.name}
             />
           </div>
           <div className="flex flex-row items-center w-full justify-between">
@@ -66,10 +72,8 @@ const LoginContext: React.FC = (): JSX.Element => {
               id="password"
               placeholder="Enter your password"
               className="rounded-md shadow-md p-4 w-2/3"
-              onChange={(e) =>
-                dispatch(setPassword({ password: e.target.value }))
-              }
-              // value={user.password}
+              onChange={(e) => dispatch(setPassword(e.target.value))}
+              value={user.password}
             />
           </div>
           <Button

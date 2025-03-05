@@ -3,13 +3,16 @@ import { createRoot } from 'react-dom/client';
 import './index.css';
 import App from './App.tsx';
 
-// import ThemeProvider from './components/ThemeProvider';
-import UserContextProvider from './contexts/context-api/UserContextProvider.tsx';
+// import UserContextProvider from './contexts/context-api/UserContextProvider.tsx';
+import { Provider } from 'react-redux';
+import { store } from './contexts/rtk/store.ts';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <UserContextProvider>
+    <Provider store={store}>
+      {/* <UserContextProvider> */}
       <App />
-    </UserContextProvider>
+      {/* </UserContextProvider> */}
+    </Provider>
   </StrictMode>
 );

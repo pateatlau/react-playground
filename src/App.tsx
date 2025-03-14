@@ -8,6 +8,7 @@ import HeaderRTK from './components/HeaderRTK';
 import LoginRTK from './components/LoginRTK';
 
 import Countdown from './components/Countdown';
+import ArrayFlat from './components/ArrayFlat';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       {/* <LoginContext /> */}
       {/* <HeaderZustand /> */}
       {/* <LoginZustand /> */}
+      <ArrayFlat />
       <Countdown />
       <HeaderRTK />
       <LoginRTK />
